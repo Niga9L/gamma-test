@@ -32,7 +32,36 @@ export const DesktopState = ({children}) => {
             return node
         })
 
-        console.log(newState)
+        dispatch({
+            type: ADD_NUMBER,
+            newState
+        })
+    }
+    const changePosition = (id, position) => {
+        const newState = [...state].map(n => {
+            if (n.objectId === id) {
+                n.x = position.x
+                n.y = position.y
+            }
+            return n
+        })
+
+        dispatch({
+            type: ADD_NUMBER,
+            newState
+        })
+    }
+
+    const changeSize = (id, size, position) => {
+        const newState = [...state].map(n => {
+            if (n.objectId === id) {
+                n.width = size.width
+                n.height = size.height
+                n.x = position.x
+                n.y = position.y
+            }
+            return n
+        })
 
         dispatch({
             type: ADD_NUMBER,
@@ -41,7 +70,7 @@ export const DesktopState = ({children}) => {
     }
 
     return (
-        <DesktopContext.Provider value={{state, changeDesktop}}>
+        <DesktopContext.Provider value={{state, changeDesktop, changePosition, changeSize}}>
             {children}
         </DesktopContext.Provider>
     )

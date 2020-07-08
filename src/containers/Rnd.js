@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Rnd } from "react-rnd";
+import {DesktopContext} from "../context/desktops/desktopContext";
 
 const style = {
     display: "flex",
@@ -9,21 +10,31 @@ const style = {
     background: "#D6FF79",
 };
 
-export class ResDrag extends React.Component{
-    render() {
-        return(
-            <Rnd
-                style={style}
-                default={{
-                    x: this.props.x,
-                    y: this.props.y,
-                    width: this.props.width,
-                    height: this.props.height
-                }}
-                bounds=".container"
-            >
-                {this.props.children}
-            </Rnd>
-        )
-    }
+export const ResDrag = props => {
+  const {changePosition, changeSize} = useContext(DesktopContext)
+
+
+  return(
+    <Rnd
+      style={style}
+      onDragStop={(e, d) => {
+        const newPosition = {x: d.x, y: d.y}
+        changePosition(props.id, newPosition)
+      }}
+      onResizeStop={(e, direction, ref, delta, position) => {
+        const newSize = {width: ref.style.width, height: ref.style.height}
+        changeSize(props.id, newSize, position)
+      }}
+      default={{
+        x: props.x,
+        y: props.y,
+        width: props.width,
+        height: props.height
+      }}
+      bounds=".container"
+    >
+      {props.children}
+    </Rnd>
+  )
+
 }

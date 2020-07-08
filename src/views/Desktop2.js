@@ -15,7 +15,7 @@ export const Desktop2 = () => {
                 if (node.desktopPosition === 2) {
                     return (
                         <div key={node.objectId}>
-                            <ResDrag width={node.width} height={node.height} x={node.x} y={node.y}>
+                            <ResDrag width={node.width} height={node.height} x={node.x} y={node.y} id={node.objectId}>
                                 <button onClick={e => clickHandler(node.objectId, -1)}>На {node.desktopPosition - 1}й рабочий стол</button>
                             </ResDrag>
                         </div>
