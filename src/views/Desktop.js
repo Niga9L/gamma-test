@@ -7,13 +7,13 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 export const Desktop = () => {
-  const {state} = useContext(DesktopContext)
+  const {state, changeDesktop} = useContext(DesktopContext)
   const [anchorEl, setAnchorEl] = useState(null);
 
   const {widgetState, currentDesktop, desktopState} = state
 
-  const onSwapHandler = (id, event) => {
-    console.log(event.currentTarget.getParent('#simple'))
+  const onSwapHandler = (id, root) => {
+    changeDesktop(id, root)
   }
 
   const handleClick = (event) => {
@@ -51,7 +51,7 @@ export const Desktop = () => {
                             key={el.desktopId}
                             data-id={el.desktopId}
                             data-root={node.objectId}
-                            onClick={e => {onSwapHandler(el.desktopId, e)
+                            onClick={e => {onSwapHandler(el.desktopId, node.objectId)
                               handleClose()
                             }}
                           >
