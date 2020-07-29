@@ -49,7 +49,7 @@ export const DesktopState = ({children}) => {
       }
       return n
     })
-
+    console.log(widgetState)
     dispatch({
       ADD_NUMBER,
       widgetState

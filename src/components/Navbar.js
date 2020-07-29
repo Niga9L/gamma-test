@@ -10,6 +10,7 @@ export const Navbar = () => {
   const onPressHandler = event => {
     if (event.key === 'Enter') {
       changeDesktopName(input, currentDesktop)
+      event.target.value = ''
     }
   }
 
@@ -17,7 +18,6 @@ export const Navbar = () => {
     const id = event.target.getAttribute('data-id')
     changeCurrentDesktop(id)
   }
-
 
   return (
     <nav className='navbar'>
@@ -35,7 +35,7 @@ export const Navbar = () => {
           desktopState.map(node => {
             return (
               <li key={node.desktopId}>
-                <span className="nav-item" data-id={node.desktopId} onClick={event => onClickHandler(event)}>{node.name}</span>
+                <span className="nav-item" data-id={node.desktopId} onClick={onClickHandler}>{node.name}</span>
               </li>
             )
           })
