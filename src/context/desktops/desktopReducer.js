@@ -1,7 +1,10 @@
-import {ADD_NUMBER} from "../types";
+import {ADD_DESKTOP, ADD_NUMBER, CHANGE_DESKTOP, CHANGE_NAME} from "../types";
 
 const handlers = {
-    [ADD_NUMBER]: (state, action) => ([...action.newState]),
+    [ADD_NUMBER]: (state, action) => ({...state, widgetState: action.widgetState}),
+    [CHANGE_NAME]: (state, action) => ({...state, desktopState: action.desktopState}),
+    [ADD_DESKTOP]: (state, action) => ({...state, desktopState: action.desktopState}),
+    [CHANGE_DESKTOP]: (state, action) => ({...state, currentDesktop: action.id}),
     DEFAULT: state => state
 }
 
