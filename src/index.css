@@ -17,13 +17,21 @@ body {
 }
 
 .navbar-nav {
+  padding-left: 20px;
   list-style-type: none;
   display: flex;
   height: 40px;
   align-items: center;
 }
+
+.nav-items {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
 .nav-item {
-  margin-right: 30px;
+  margin-right: 10px  ;
   color: #303036;
   cursor: pointer;
 }
@@ -39,6 +47,10 @@ body {
 .icon {
   color: #D6FF79;
   cursor: pointer;
+}
+
+.close {
+  color: red;
 }
 
 .icon:hover {

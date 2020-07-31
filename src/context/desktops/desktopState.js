@@ -69,6 +69,15 @@ export const DesktopState = ({children}) => {
     })
   }
 
+  const deleteDesktop = id => {
+    const desktopState = [...state.desktopState].filter(item => item.desktopId !== id)
+
+    dispatch({
+      type: ADD_DESKTOP,
+      desktopState
+    })
+  }
+
   const changeSize = (id, size, position) => {
     const widgetState = [...state.widgetState].map(n => {
       if (n.objectId === id) {
@@ -126,7 +135,8 @@ export const DesktopState = ({children}) => {
         changeSize,
         changeDesktopName,
         addNewDesktop,
-        changeCurrentDesktop
+        changeCurrentDesktop,
+        deleteDesktop
       }}>
       {children}
     </DesktopContext.Provider>
