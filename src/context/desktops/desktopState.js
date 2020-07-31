@@ -30,7 +30,6 @@ export const DesktopState = ({children}) => {
       },
       {
         objectId: getRandomId(100),
-        // desktopPosition: new Date().getTime().toString(),
         desktopPosition: new Date().getTime().toString(),
         width: 550,
         height: 300,
@@ -49,7 +48,7 @@ export const DesktopState = ({children}) => {
       }
       return n
     })
-    console.log(widgetState)
+
     dispatch({
       ADD_NUMBER,
       widgetState
